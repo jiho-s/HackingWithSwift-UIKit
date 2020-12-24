@@ -12,7 +12,21 @@
 
 ## 1. Setting up
 
+- 프로젝트 생성
 
+  1. iOS -> App 
+
+  2. Product Name 및 Organization Identifier 설정
+
+     Interface Storyboard 선택
+
+  3. 저장 위치 선택
+
+- 이미지 넣기
+
+  - Copy Items if needed 체크
+  - Create Groups 체크
+  - Add to targets에 선택
 
 ## 2. Listing images with FileManager
 

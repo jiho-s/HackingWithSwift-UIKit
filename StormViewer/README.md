@@ -64,6 +64,50 @@
 
 ## 3. Designing our interface
 
+- UITableViewController
+
+  
+
+- StoryBoard에서 ViewController를 TableViewController로 교체
+
+  - 기존 ViewController삭제 및 TableViewController추가
+
+  - TableViewController에서 Class 선택
+
+    Identity inspector로 이동해서 클래스에 기존 ViewController.swift 파일 선택
+
+  - Initial ViewController로 지정
+
+    Attributes Inspector로 이동해서 InitalViewController에 체크
+
+  - NavigationController 추가
+
+    Editer -> Embedded In 에 NavigationController 추가
+
+  - Cell 설정
+
+    - Style 설정
+
+      Attributes Inspector로 이동해서 Style을 Basic으로 변경
+
+    - Identifier 설정
+
+      Attributes Inspector로 이동해서 Identifier을 Picture로 변경
+
+- ViewController.swift에서 cell 표시하기
+
+  - tableView(_ tableView: numberOfRowsInSection:)
+
+    tableView의 row의 개수를 설정
+
+  - tableView(**_** tableView: UITableView, cellForRowAt indexPath: IndexPath)
+
+    Cell 각각에 어떤 데이터를 넣을 건지
+
+    - tableView.dequeueReusableCell(withIdentifier:String, for:IndexPath)
+
+      iOS에서는 cell을 화면에 표시되는 개수만큼만 생성하고 재활용 해서 사용한다 그 재활용하는 cell을 가져오기 위한 메소드
+
 ## 정보
 
 [https://www.hackingwithswift.com/100/16]

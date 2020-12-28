@@ -30,9 +30,39 @@
 
 ## 2. Listing images with FileManager
 
+- UIViewController
 
+   애플의 기본 스크린 타입
 
-## 2. Designing our interface
+  - viewDidLoad()
+
+    view가 메모리에 로드 되었을 때 호출되는 함수
+
+    view에 필요한 파일을 로드하기 등 view초기화시 사용
+
+- FileManager
+
+  - default
+
+    싱글톤 FileManger 인스턴스 제공
+
+  - contentsOfDirectory(atPath:)
+
+    설정한 경로의 디렉토리 안에 있는 파일들을 [String]으로 반환
+
+- Bundle
+
+  실행 가능한 코드와 그 코드가 사용하는 자원을 포함
+
+  - main
+
+    현재 실행중인 디렉토리의 자원에 접근할 수 있다
+
+    - resourcePath
+
+      Bundle의 리소스에 접근할 수 있는 서브디렉토리 경로
+
+## 3. Designing our interface
 
 ## 정보
 

@@ -6,9 +6,10 @@
 
 ## 목차
 
-1. Setting up
-2. Listing images with FileManager
-3. Designing our interface
+[1. Setting up](#1.-setting-up)
+[2. Listing images with FileManager](#2.-listing-images-with-filemanager)
+[3. Designing our interface](#3.-designing-our-interface)
+[4. Building a detail screen](#4.-building-a-detail-screen)
 
 ## 1. Setting up
 
@@ -107,6 +108,32 @@
     - tableView.dequeueReusableCell(withIdentifier:String, for:IndexPath)
 
       iOS에서는 cell을 화면에 표시되는 개수만큼만 생성하고 재활용 해서 사용한다 그 재활용하는 cell을 가져오기 위한 메소드
+
+## 4. Building a detail screen
+
+- DetailViewController.swift 만들기
+  - Menu->file->iOS->Cocoa Touch Class 선택
+  - DetailViewController로 이름 설정
+  - Subclass Of에 UIViewController 선택, Also create XIB file은 선택하지 않음
+
+- Main.storyboard파일에 추가하기
+  - View Controller 추가
+  - Identity inspector로 이동해서 클래스에 기존 DetailViewController.swift 파일 선택
+  - Identity Inspector로 이동해서 Storyboard Id에 Detail로 설정
+
+- UIImageVIew 추가하기
+
+  - Object에서 UIImageView 추가하기
+
+    추가한후 화면크기 꽉차게
+
+- Auto Layout 설정
+  - Editor->Resolve Auto Laout issues -> Reset To Suggested Constraints
+
+- Image VIew를 코드와 연결
+  - ^ + option + command + return 키를 이용해 Assistant Editor를 연다
+  - ImageView를 클래스 안으로 넣고 이름을 imageView strong으로 설정
+    - @IBOutlet : Interface Builder와 연결되어 있음을 알려준다
 
 ## 정보
 

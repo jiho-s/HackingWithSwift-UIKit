@@ -13,6 +13,8 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Storm Viewer"
+        navigationController?.navigationBar.prefersLargeTitles = true
         let fm = FileManager.default
         // 번들에는 컴파일 된 소스코드 및 모든 assets 포함
         let path = Bundle.main.resourcePath!

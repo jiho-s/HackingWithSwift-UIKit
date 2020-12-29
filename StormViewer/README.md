@@ -11,6 +11,7 @@
 [3. Designing our interface](#3.-designing-our-interface)
 [4. Building a detail screen](#4.-building-a-detail-screen)
 [5. Loading images with UIImage](#5.-loading-images-with-uiimage)
+[6. HidesBarsOnTap and large titles](#6.-hidesbarsontap-and-large-titles)
 
 ## 1. Setting up
 
@@ -179,6 +180,51 @@
                 imageView.image = UIImage(named: imageToLoad)
             }
         }
+    ```
+
+## 6. HidesBarsOnTap and large titles
+
+- Aspect Fill로 변경
+
+  - storyboard에서 imageView를 선택후 attributes inspector로 이동
+
+    view의 Content Mode를 Aspect Fill로 변경
+
+- Tap하여 NavigationController 숨기기
+
+  ```swift
+      override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(animated)
+          navigationController?.hidesBarsOnTap = true
+      }
+      override func viewWillDisappear(_ animated: Bool) {
+          super.viewWillDisappear(animated)
+          navigationController?.hidesBarsOnTap = false
+      }
+  ```
+
+- Disclosure indicator 표시하기
+
+  - cell 선택후 attributes inspector이동
+
+    Accessory에 Disclosure Indicator 선택
+
+- Title 설정하기
+
+  viewDidLoad()메소드 안에 super.viewDidLoad()뒤에 `title = "title"` 추가
+
+- Large title
+
+  - viewDidLoad()에 다음을 추가
+
+    ```swift
+    navigationController?.navigationBar.prefersLargeTitles = true
+    ```
+
+  - DetailViewController에서는 Large Title 비활성화
+
+    ```
+    navigationItem.largeTitleDisplayMode = .never
     ```
 
 ## 정보

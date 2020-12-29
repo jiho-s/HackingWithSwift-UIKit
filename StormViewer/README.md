@@ -10,6 +10,7 @@
 [2. Listing images with FileManager](#2.-listing-images-with-filemanager)
 [3. Designing our interface](#3.-designing-our-interface)
 [4. Building a detail screen](#4.-building-a-detail-screen)
+[5. Loading images with UIImage](#5.-loading-images-with-uiimage)
 
 ## 1. Setting up
 
@@ -65,7 +66,7 @@
 
 ## 3. Designing our interface
 
-- UITableViewController
+- `UITableViewController`
 
   
 
@@ -128,12 +129,57 @@
     추가한후 화면크기 꽉차게
 
 - Auto Layout 설정
-  - Editor->Resolve Auto Laout issues -> Reset To Suggested Constraints
-
+  
+- Editor->Resolve Auto Laout issues -> Reset To Suggested Constraints
+  
 - Image VIew를 코드와 연결
   - ^ + option + command + return 키를 이용해 Assistant Editor를 연다
   - ImageView를 클래스 안으로 넣고 이름을 imageView strong으로 설정
     - @IBOutlet : Interface Builder와 연결되어 있음을 알려준다
+
+## 5. Loading images with UIImage
+
+- `DetailViewController`에 프로퍼티 추가
+
+  ```swift
+  import UIKit
+  
+  class DetailViewController: UIViewController {
+  
+      @IBOutlet var imageView: UIImageView!
+      
+      var selectedImage: String?
+    
+    	//...
+  }
+  ```
+
+- `ViewController.swift`에 row 선택시 화면전환
+
+  - `tableView(_: didSelectRowAt)`
+
+    row가 선택되면 호출
+
+  - `Storyboard?.instantiateViewController(identifier:)`
+
+    스토리보드에서 identifier에 해당하는 view의 레이아웃을 로드
+
+  - `navigationController?.pushViewController(_:, animated:)`
+
+    push로 화면 전환
+
+- DetailViewController에서 이름으로 사진 표시
+
+  - `viewDidLoad()`에서 사진 조회
+
+    ```swift
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            if let imageToLoad = selectedImage {
+                imageView.image = UIImage(named: imageToLoad)
+            }
+        }
+    ```
 
 ## 정보
 

@@ -1,17 +1,17 @@
 # StormViewer
 
-> 
+> FileManager로 사진 이름 조회후 사진 표시
 
 [![Swift Version][swift-image]][swift-url]
 
 ## 목차
 
-[1. Setting up](#1.-setting-up)
-[2. Listing images with FileManager](#2.-listing-images-with-filemanager)
-[3. Designing our interface](#3.-designing-our-interface)
-[4. Building a detail screen](#4.-building-a-detail-screen)
-[5. Loading images with UIImage](#5.-loading-images-with-uiimage)
-[6. HidesBarsOnTap and large titles](#6.-hidesbarsontap-and-large-titles)
+1. [Setting up](#1.-setting-up)
+2. [Listing images with FileManager](#2.-listing-images-with-filemanager)
+3. [Designing our interface](#3.-designing-our-interface)
+4. [Building a detail screen](#4.-building-a-detail-screen)
+5. [Loading images with UIImage](#5.-loading-images-with-uiimage)
+6. [HidesBarsOnTap and large titles](#6.-hidesbarsontap-and-large-titles)
 
 ## 1. Setting up
 

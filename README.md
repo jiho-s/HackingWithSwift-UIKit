@@ -6,7 +6,7 @@
 
 ## 목차
 
-1. [StormViewer](#storm-viewer)
+1. [StormViewer](#storm-viewer)
 
 ## [Storm Viewer](./StormViewer)
 

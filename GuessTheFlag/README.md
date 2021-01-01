@@ -10,6 +10,7 @@
 2. [Designing your layout](#designing-your-layout)
 3. [Making the basic game work](#making-the-basic-game-work)
 4. [Guess which flag: random numbers](#guess-which-flag:-random-numbers)
+5. [From outlets to actions: creating an IBAction](#from-outlets-to-actions:-creating-an-ibaction)
 
 ## Setting up
 
@@ -176,10 +177,64 @@
 
 - 지정한 국가를 Title로 표시
 
-  `viewDidLoad()` 마지막에 다음을 추가하여 Title을 설정한다
+  `askQuestion()` 마지막에 다음을 추가하여 Title을 설정한다
 
   ```swift
   title = countries[correctAnswer].uppercased()
+  ```
+
+# From outlets to actions: creating an IBAction
+
+- Button의 IBAction 만들기
+
+  스토리보드에서 버튼을 선택후 메소드 생성 Connection을 Action으로 Name을 `buttonTapped` Type을 `UIButton` 으로 설정한다.
+
+  3개의 버튼을 모두 같은 메소드에 연결한다 
+
+- 버튼을 구별하기
+
+  같은 메서드에 버튼을 모두 연결 시켰으므로 구분을 해야한다 따라서 버튼을 선택후 attribute inspector로 이동해서 View에 tag를 0, 1, 2로 설정한다
+
+- `buttonTapped()` 메소드 작성
+
+  ```swift
+  var title: String
+  
+  if sender.tag == correctAnswer {
+      title = "Correct"
+      score += 1
+  } else {
+      title = "Wrong"
+      score -= 1
+  }
+  ```
+
+- `UIAlertController`로 경고창 출력
+
+  `buttonTapped()` 메소드 아래에 다음을 입력한다
+
+  ```swift
+  let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .alert)
+  ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+  present(ac, animated: true)
+  ```
+
+  `preferredStyle`에는 `.alert` 와 `.actionSheet` 가 있으며 `.alert` 는 화면 중앙에 경고창을 띄워주며 `.actionSheet` 는 화면 아래에 경고창을 띄워준다
+
+  `UIAlertAction` 은 경고창에 버튼을 추가시킨다
+
+- `askQuestion()` 에 파라미터 추가
+
+  UIAlertAction으로 클로저를 전달하려면 파라미터로 메소드에 파라미터로 `UIAlertAction` 이 있어야 한다.
+
+  ```swift
+      func askQuestion(action: UIAlertAction! = nil) {
+          countries.shuffle()
+          button1.setImage(UIImage(named: countries[0]), for: .normal)
+          button1.setImage(UIImage(named: countries[0]), for: .normal)
+          button1.setImage(UIImage(named: countries[0]), for: .normal)
+          correctAnswer = Int.random(in: 0..<3)
+      }
   ```
 
   

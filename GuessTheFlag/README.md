@@ -9,6 +9,7 @@
 1. [Setting up](#setting-up)
 2. [Designing your layout](#designing-your-layout)
 3. [Making the basic game work](#making-the-basic-game-work)
+4. [Guess which flag: random numbers](#guess-which-flag:-random-numbers)
 
 ## Setting up
 
@@ -140,6 +141,45 @@
   button1.layer.borderColor = UIColor.lightGray.cgColor
   button2.layer.borderColor = UIColor.lightGray.cgColor
   button3.layer.borderColor = UIColor.lightGray.cgColor
+  ```
+
+  
+
+# Guess which flag: random numbers
+
+- 배열을 섞기
+
+  `askQuestion()` 에 `shuffle()`을 이용해 배열을 섞는다
+
+  ```swift
+      func askQuestion() {
+          countries.shuffle()
+          button1.setImage(UIImage(named: countries[0]), for: .normal)
+          button1.setImage(UIImage(named: countries[0]), for: .normal)
+          button1.setImage(UIImage(named: countries[0]), for: .normal)
+      }
+  ```
+
+- 정답 지정하기
+
+  controller에 변수 `var correctAnswer = 0` 을 선언하고`Int.random(in:)` 을 이용해 랜덤 숫자를 만든다
+
+  ```swift
+      func askQuestion() {
+          countries.shuffle()
+          button1.setImage(UIImage(named: countries[0]), for: .normal)
+          button1.setImage(UIImage(named: countries[0]), for: .normal)
+          button1.setImage(UIImage(named: countries[0]), for: .normal)
+          correctAnswer = Int.random(in: 0..<3)
+      }
+  ```
+
+- 지정한 국가를 Title로 표시
+
+  `viewDidLoad()` 마지막에 다음을 추가하여 Title을 설정한다
+
+  ```swift
+  title = countries[correctAnswer].uppercased()
   ```
 
   

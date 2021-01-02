@@ -1,6 +1,6 @@
 # Guess The Flag
 
-> FileManager로 사진 이름 조회후 사진 표시
+> UIButton Custom, UIAlertController
 
 [![Swift Version][swift-image]][swift-url]
 
@@ -11,6 +11,7 @@
 3. [Making the basic game work](#making-the-basic-game-work)
 4. [Guess which flag: random numbers](#guess-which-flag:-random-numbers)
 5. [From outlets to actions: creating an IBAction](#from-outlets-to-actions:-creating-an-ibaction)
+6. [Wrap up](#wrap-up)
 
 ## Setting up
 
@@ -237,7 +238,65 @@
       }
   ```
 
+
+## Wrap up
+
+### Challenge
+
+- 사용자 점수 `navigationbar` 에 표시
+
+  `askQuestion()` 부분에 `title` 설정하는 부분을 수정
+
+  ```swift
+  title = countries[correctAnswer].uppercased() + "   score: \(score)"
   
+  ```
+
+- 질문 개수를 기록하고 10개가 되면 최종 점수 출력
+
+  `controller` 에 `var count = 0` 을 추가하고 `buttonTapped` 에 다음을 추가
+
+  ```swift
+      @IBAction func buttonTapped(_ sender: UIButton) {
+          var title: String
+  
+          if sender.tag == correctAnswer {
+              title = "Correct"
+              score += 1
+          } else {
+              title = "Wrong"
+              score -= 1
+          }
+          count += 1
+          var ac: UIAlertController
+          if count == 10 {
+              ac = UIAlertController(title: "Final", message: "Your final score is \(score).", preferredStyle: .alert)
+              count = 0
+              score = 0
+          } else {
+              ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .alert)
+          }
+          ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+          present(ac, animated: true)
+      }
+  ```
+
+- 잘못된 국기를 눌렀을 때 정답 알려주기
+
+  ```swift
+      @IBAction func buttonTapped(_ sender: UIButton) {
+          var title: String
+  
+          if sender.tag == correctAnswer {
+              title = "Correct"
+              score += 1
+          } else {
+              title = "Wrong That’s the flag of \(countries[sender.tag].uppercased())"
+              score -= 1
+          }
+          //...
+       }
+  ```
 
 ## 정보
 

@@ -17,7 +17,7 @@
 - UINavigationBar
 - NavigationController
 
-## [Guess The Flag](./GuessTHeFlag)
+## [Guess The Flag](./GuessTheFlag)
 
 - Auto Layout
 - asset catalogs(@2x, @3x)

@@ -6,7 +6,8 @@
 
 ## 목차
 
-1. [StormViewer](#storm-viewer)
+1. [Storm Viewer](#storm-viewer)
+2. [Guess The Flag](#guess-the-flag)
 
 ## [Storm Viewer](./StormViewer)
 
@@ -15,6 +16,15 @@
 - UIImage
 - UINavigationBar
 - NavigationController
+
+## [Guess The Flag](./GuessTHeFlag)
+
+- Auto Layout
+- asset catalogs(@2x, @3x)
+- UIButton
+- CALayer
+- UIColor
+- UIAlertController
 
 ## 정보
 

@@ -8,6 +8,7 @@
 
 1. [Storm Viewer](#storm-viewer)
 2. [Guess The Flag](#guess-the-flag)
+3. [Social Media](#social-media)
 
 ## [Storm Viewer](./StormViewer)
 
@@ -25,6 +26,11 @@
 - CALayer
 - UIColor
 - UIAlertController
+
+## [Social Media](./SocialMedia)
+
+- UIBarButtonItem
+- UIActivityViewController
 
 ## 정보
 

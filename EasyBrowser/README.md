@@ -8,6 +8,7 @@
 
 1. [Setting up](#setting-up)
 2. [Creating a simple browser with WKWebView](#creating-a-simple-browser-with-wkwebview)
+3. [Choosing a website: UIAlertController action sheets](#choosing-a-website:-uialertcontroller-action-sheets)
 
 ## Setting up
 
@@ -57,7 +58,41 @@
 
   `allowBackForwardNavigaionGestures`는 가장자리에서 스와이프하여 이동하는거 활성화
 
-  
+##   Choosing a website: UIAlertController action sheets
+
+- BarItem 추가
+
+  `viewDidLoad()`에 다음을 추가
+
+  ```swift
+  navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
+  ```
+
+- `openTapped()`메소드 작성
+
+  ```swift
+  @objc func openTapped() {
+      let ac = UIAlertController(title: "Open page…", message: nil, preferredStyle: .actionSheet)
+      ac.addAction(UIAlertAction(title: "apple.com", style: .default, handler: openPage))
+      ac.addAction(UIAlertAction(title: "hackingwithswift.com", style: .default, handler: openPage))
+      ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+      ac.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+      present(ac, animated: true)
+  }
+  ```
+
+- `openPage()` 메소드 작성
+
+  ```swift
+  func openPage(action: UIAlertAction) {
+      let url = URL(string: "https://" + action.title!)!
+      webView.load(URLRequest(url: url))
+  }
+  ```
+
+- navigationTitle 설정
+
+  `webView(_:, didFisnish)`를 이용하여 최근에 로드된 page로 title을 설정 할 수 있다
 
 ## 정보
 

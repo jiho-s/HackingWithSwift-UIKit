@@ -10,6 +10,7 @@
 2. [Creating a simple browser with WKWebView](#creating-a-simple-browser-with-wkwebview)
 3. [Choosing a website: UIAlertController action sheets](#choosing-a-website:-uialertcontroller-action-sheets)
 4. [Monitoring page loads: UIToolbar and UIProgressView](#monitoring-page-loads:-uitoolbar-and-UIProgressView)
+5. [Refactoring for the win](#refactoring-for-the-win)
 
 ## Setting up
 
@@ -181,6 +182,51 @@
           progressView.progress = Float(webView.estimatedProgress)
       }
   }
+  ```
+
+# Refactoring for the win
+
+- website 변수 추가
+
+  ```swift
+  var websites = ["apple.com", "hackingwithswift.com"]
+  ```
+
+- `viewDidLoad()`를 다음과 같이 수정
+
+  ```swift
+  let url = URL(string: "https://" + websites[0])!
+  webView.load(URLRequest(url: url))
+  ```
+
+- `openTapped()`를 수정
+
+  ```swift
+  for website in websites {
+      ac.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
+  }
+  ```
+
+- `webView(_:, decidePolicyFor:, decisionHandler)`
+
+  내비게이션을 허용 할지 매번 선택할 수 있다. 네비게이션을 시작한 부분을 체크 할 수 있고, 제출되거나 클릭되었는지 확인할 수 있다. 또한 URL을 체크 할 수 있다.
+
+  `decisionHandler`는 `@escaping` 클로져로 현재 메소드가 아닌 다른곳에서 사용될 수도 있다.
+
+  ```swift
+   func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+          let url = navigationAction.request.url
+          
+          if let host = url?.host {
+              websites.forEach {
+                  if host.contains($0) {
+                      decisionHandler(.allow)
+                      return
+                  }
+              }
+          }
+          decisionHandler(.cancel)
+      }
   ```
 
   

@@ -9,6 +9,7 @@
 1. [Storm Viewer](#storm-viewer)
 2. [Guess The Flag](#guess-the-flag)
 3. [Social Media](#social-media)
+4. [Easy Browser](#easy-browser)
 
 ## [Storm Viewer](./StormViewer)
 
@@ -31,6 +32,16 @@
 
 - UIBarButtonItem
 - UIActivityViewController
+
+## [Easy Browser](./EasyBrowser)
+
+- loadView()
+- WKWebView
+- delegation
+- URL
+- URLRequest
+- UIToolbar
+- UIProgressView
 
 ## 정보
 

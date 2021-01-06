@@ -1,6 +1,6 @@
 # Easy Browser
 
-> FileManager로 사진 이름 조회후 사진 표시
+> WKWebView 사용하기
 
 [![Swift Version][swift-image]][swift-url]
 
@@ -11,13 +11,14 @@
 3. [Choosing a website: UIAlertController action sheets](#choosing-a-website:-uialertcontroller-action-sheets)
 4. [Monitoring page loads: UIToolbar and UIProgressView](#monitoring-page-loads:-uitoolbar-and-UIProgressView)
 5. [Refactoring for the win](#refactoring-for-the-win)
+6. [Wrap up](#wrap-up)
 
 ## Setting up
 
 - 프로젝트 생성
 - Navigation Controller 설정
 
-# Creating a simple browser with WKWebView
+## Creating a simple browser with WKWebView
 
 - WkWebView 추가
 
@@ -184,7 +185,7 @@
   }
   ```
 
-# Refactoring for the win
+## Refactoring for the win
 
 - website 변수 추가
 
@@ -229,7 +230,30 @@
       }
   ```
 
-  
+
+## Wrap up
+
+### Challenge
+
+- 사용자가 허용되지 않는 URL을 방문하려고 하면 차단되었다는 경고 표시
+
+  `webView(_:, decidePolicyFor:,  decisionHandler:)`에 다음을 추가한다.
+
+  ```swift
+  let ac = UIAlertController(title: "차단되었습니다", message: "\(url!)에 방문할 수 없습니다.", preferredStyle: .alert)
+          ac.addAction(UIAlertAction(title: "확인", style: .cancel))
+          present(ac, animated: true)
+  ```
+
+-  `webView.goBack`, `webView.goForward`를 이용하여 제목 앞뒤로 새로운 toolbar item 생성하기
+
+  `viewDidLoad()`에 다음을 추가
+
+  ```swift
+  let backButton = UIBarButtonItem(barButtonSystemItem: .reply, target: webView, action: #selector(webView.goBack))
+          let forwardButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.goForward))
+          navigationItem.leftBarButtonItems = [backButton, forwardButton]
+  ```
 
 ## 정보
 

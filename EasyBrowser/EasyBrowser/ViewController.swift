@@ -25,7 +25,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
-        
+                
         progressView = UIProgressView(progressViewStyle: .default)
         progressView.sizeToFit()
         let progressButton = UIBarButtonItem(customView: progressView)
@@ -33,7 +33,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
         toolbarItems = [progressButton, spacer, refresh]
         navigationController?.isToolbarHidden = false
-        // Do any additional setup after loading the view.
+        
+        let backButton = UIBarButtonItem(barButtonSystemItem: .reply, target: webView, action: #selector(webView.goBack))
+        let forwardButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.goForward))
+        navigationItem.leftBarButtonItems = [backButton, forwardButton]
     }
     
     @objc func openTapped() {
@@ -73,6 +76,9 @@ class ViewController: UIViewController, WKNavigationDelegate {
             }
         }
         decisionHandler(.cancel)
+        let ac = UIAlertController(title: "차단되었습니다", message: "\(url!)에 방문할 수 없습니다.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "확인", style: .cancel))
+        present(ac, animated: true)
     }
 
 

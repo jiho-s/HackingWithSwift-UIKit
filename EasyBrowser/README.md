@@ -8,8 +8,8 @@
 
 1. [Setting up](#setting-up)
 2. [Creating a simple browser with WKWebView](#creating-a-simple-browser-with-wkwebview)
-3. [Choosing a website: UIAlertController action sheets](#choosing-a-website:-uialertcontroller-action-sheets)
-4. [Monitoring page loads: UIToolbar and UIProgressView](#monitoring-page-loads:-uitoolbar-and-UIProgressView)
+3. [Choosing a website: UIAlertController action sheets](#choosing-a-website-uialertcontroller-action-sheets)
+4. [Monitoring page loads: UIToolbar and UIProgressView](#monitoring-page-loads-uitoolbar-and-UIProgressView)
 5. [Refactoring for the win](#refactoring-for-the-win)
 6. [Wrap up](#wrap-up)
 
@@ -61,7 +61,7 @@
 
   `allowBackForwardNavigaionGestures`는 가장자리에서 스와이프하여 이동하는거 활성화
 
-##   Choosing a website: UIAlertController action sheets
+##   Choosing a website UIAlertController action sheets
 
 - BarItem 추가
 
@@ -97,7 +97,7 @@
 
   `webView(_:, didFisnish)`를 이용하여 최근에 로드된 page로 title을 설정 할 수 있다
 
-## Monitoring page loads: UIToolbar and UIProgressView
+## Monitoring page loads UIToolbar and UIProgressView
 
 ### `UIToolbar` 활성화
 
